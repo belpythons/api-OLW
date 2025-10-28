@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/programs",
+      "dest": "/src/routes/programs.js"
+    },
+    {
+      "src": "/api/roadmap",
+      "dest": "/src/routes/roadmap.js"
+    },
+    {
+      "src": "/api/forums",
+      "dest": "/src/routes/forums.js"
+    },
+    {
+      "src": "/api/posts",
+      "dest": "/src/routes/posts.js"
+    },
+    {
+      "src": "/api/comments",
+      "dest": "/src/routes/comments.js"
+    },
+    {
+      "src": "/api/about",
+      "dest": "/src/routes/about.js"
+    },
+    {
+      "src": "/api/contacts",
+      "dest": "/src/routes/contacts.js"
+    },
+    {
+      "src": "/api/documentaries",
+      "dest": "/src/routes/documentaries.js"
+    },
+    {
+      "src": "/api/community",
+      "dest": "/src/routes/community.js"
+    },
+    {
+      "src": "/api/users",
+      "dest": "/src/routes/users.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url"
+  }
+}
