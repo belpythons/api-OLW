@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -159,4 +159,5 @@ model CommunityLinks {
   icon        String? @db.VarChar(100)
 
   @@map("community_links")
+
 }
