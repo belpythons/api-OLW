@@ -8,53 +8,45 @@
   ],
   "routes": [
     {
-      "src": "/api/programs",
-      "dest": "/src/routes/programs.js"
-    },
-    {
-      "src": "/api/roadmap",
-      "dest": "/src/routes/roadmap.js"
-    },
-    {
-      "src": "/api/forums",
-      "dest": "/src/routes/forums.js"
-    },
-    {
-      "src": "/api/posts",
-      "dest": "/src/routes/posts.js"
-    },
-    {
-      "src": "/api/comments",
-      "dest": "/src/routes/comments.js"
-    },
-    {
-      "src": "/api/about",
-      "dest": "/src/routes/about.js"
-    },
-    {
-      "src": "/api/contacts",
-      "dest": "/src/routes/contacts.js"
-    },
-    {
-      "src": "/api/documentaries",
-      "dest": "/src/routes/documentaries.js"
-    },
-    {
-      "src": "/api/community",
-      "dest": "/src/routes/community.js"
-    },
-    {
-      "src": "/api/users",
-      "dest": "/src/routes/users.js"
+      "src": "/api/(.*)",
+      "dest": "index.js",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+      }
     },
     {
       "src": "/(.*)",
-      "dest": "/index.js"
+      "dest": "index.js"
     }
   ],
-  "env": {
-    "DATABASE_URL": "$DATABASE_URL"
-  }
-
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ]
 }
-
