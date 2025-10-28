@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import serverless from "serverless-http";
+
 import { router as about } from "./src/routes/about.js";
 import { router as contacts } from "./src/routes/contacts.js";
 import { router as programs } from "./src/routes/programs.js";
@@ -28,6 +30,4 @@ app.use("/api/users", users);
 
 app.get("/api/health", (_, res) => res.json({ ok: true }));
 
-app.listen(process.env.PORT || 4000, () =>
-  console.log(`API on :${process.env.PORT || 4000}`)
-);
+export const handler = serverless(app);
